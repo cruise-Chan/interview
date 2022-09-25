@@ -102,7 +102,7 @@ modules:{
         devServer: {
             port: 8080,    // 服务器启动的端口
             contentBase: './dist',  // 服务器静态资源文件夹，或者配置名为static？
-            progress: true,  //  打包时现实进度条
+            progress: true,  //  打包时显示进度条
             open: true,     // 启动服务器后，自动打开浏览器
             compress: true,   // 开启gzip压缩
             proxy: {
@@ -341,3 +341,32 @@ const prodConfig = {
 ## 9.1 两者在运行机制上的区别
     loader 运行在打包文件之前
     plugins 在整个编译周期都起作用
+
+
+
+## 10、webpack优化策略
+- 1、gzip压缩代码
+    - compression-webpack-plugin
+## 11.webpack热更新
+- 1、安装 webpack-dev-server 插件
+```javascript
+var devConfig = {
+    mode:'devolopment'
+    devServer: {
+        port: 8080,    // 服务器启动的端口
+        contentBase: './dist',  // 服务器静态资源文件夹，或者配置名为static？
+        progress: true,  //  打包时显示进度条
+        open: true,     // 启动服务器后，自动打开浏览器
+        compress: true,   // 开启gzip压缩
+        proxy: {
+            '/api/startPath': { // 匹配文件开始路径
+                target: 'http: //www.baidu.com', // 目标服务器地址
+                pathRewrite: {       // 将url开头的/api替换为空
+                    '^/api': ''
+                },
+                changeOrigin: true   // 跨域问题
+            }
+        }
+    }
+}
+```

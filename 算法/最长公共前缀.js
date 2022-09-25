@@ -7,9 +7,6 @@ var longestCommonPrefix = function(strs){
         if(strs[max] < strs[i]) max = i;
     }
     
-    console.log('flower' > 'flow','比较')
-    console.log('flower' > 'flight','比较')
-    console.log('flight' > 'flow','比较')
     for (let j = 0; j < strs[min].length; j++) {
         if(strs[min].charAt(j) !== strs[max].charAt(j)){
             return strs[min].substring(0,j)

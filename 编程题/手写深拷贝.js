@@ -20,7 +20,7 @@ function deepClone(obj, tempNodes=[]) {
         let currentNodes = tempNodes.shift();
         currentNodes[0][currentNodes[1]] = deepClone(currentNodes[2], tempNodes)
     }
-    return newObj;
+    return newObj; 
 }
 
 // 测试代码
